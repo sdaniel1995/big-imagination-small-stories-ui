@@ -15,13 +15,13 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                script {
-                    sh 'npm run test'
-                }
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         script {
+        //             sh 'npm run test'
+        //         }
+        //     }
+        // }
 
         // stage('Build Docker Image') {
         //     steps {
@@ -56,10 +56,10 @@ pipeline {
         //     }
         // }
 
-        // stage('Clean Workspace') {
-        //     steps {
-        //         cleanWs()
-        //     }
-        // }
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
     }
 }
