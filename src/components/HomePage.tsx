@@ -5,7 +5,7 @@ import '../css/HomePage.css';
 
 const HomePage = () => {
     return (
-        <div className='home'>
+        <div className='home' data-testid='homePage'>
             <Collections />
             <Upload />
             <AboutMe />
