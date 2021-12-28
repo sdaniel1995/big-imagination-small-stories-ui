@@ -1,0 +1,24 @@
+.home {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.homeSelections {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.homeSelections h1 {
+    font-size: 300%;
+    transition: .2s;
+    color: white;
+}
+
+.homeSelections h1:hover {
+    transform: scale(2.0);
+    color: black;
+    border-bottom: 2px solid black;
+}

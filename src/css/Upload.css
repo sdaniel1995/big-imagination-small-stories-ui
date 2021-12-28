@@ -1,0 +1,59 @@
+.inputFile {
+	opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+}
+
+#input {
+    display: block;
+    position: relative;
+    width: auto;
+    height: 50px;
+    border-radius: 25px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform .2s ease-out;
+}
+
+#input:focus,
+#input:hover {
+    transform: scale(1.2);
+}
+
+#input:focus {
+    outline: 1px solid #000;
+}
+
+#inputLabel {
+    cursor: pointer;
+    font-size: medium;
+}
+
+#moreArrow {
+    padding-left: 20px;
+}
+
+#uploadBtn {
+    height: 100%;
+    width: auto;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: medium;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+#uploadBtn:hover {
+    background-color: white;
+    color: black;
+}
