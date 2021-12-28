@@ -40,7 +40,6 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker rmi danielshane861/big-imagination-small-stories-ui'
                 script {
                     def dockerStop = 'docker stop big-imagination-small-stories-ui'
                     def dockerRm = 'docker rm big-imagination-small-stories-ui'
