@@ -32,8 +32,12 @@ const Upload = () => {
                     <input type="file" name="file" id="file" onChange={changeHandler} className='inputFile' />
                     <span id='input'>
                         <label htmlFor='file' id='inputLabel'>{fullFileName ? placeHolder : placeHolder.substring(0, 20) + '...'}</label>
-                        {selectedFile && <ArrowForwardIosIcon id='moreArrow' onClick={() => setFullFileName(!fullFileName)} />}
-                        <button type="submit" id='uploadBtn' onClick={handleSubmission}>Upload</button>
+                        {selectedFile &&
+                            <>
+                                <ArrowForwardIosIcon id='moreArrow' onClick={() => setFullFileName(!fullFileName)} />
+                                <button type="submit" id='submitBtn' onClick={handleSubmission}>Submit</button>
+                            </>
+                        }
                     </span>
                 </div>
             }

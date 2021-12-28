@@ -1,6 +1,6 @@
 import Collections from './Collections';
 import Upload from './Upload';
-import Contact from './Contact';
+import AboutMe from './AboutMe';
 import '../css/HomePage.css';
 
 const HomePage = () => {
@@ -8,7 +8,7 @@ const HomePage = () => {
         <div className='home'>
             <Collections />
             <Upload />
-            <Contact />
+            <AboutMe />
         </div>
     )
 }

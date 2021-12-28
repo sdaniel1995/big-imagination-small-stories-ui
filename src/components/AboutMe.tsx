@@ -1,9 +1,9 @@
-const Contact = () => {
+const AboutMe = () => {
     return (
         <div className='homeSelections'>
-            <h1>Contact Me</h1>
+            <h1>About Me</h1>
         </div>
     );
 };
 
-export default Contact;
+export default AboutMe;
