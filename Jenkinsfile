@@ -25,7 +25,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t danielshane861/big-imagination-small-stories-ui .'
+                sh 'docker build -t danielshane861/big-imagination-small-stories-ui:latest_ui .'
             }
         }
         
