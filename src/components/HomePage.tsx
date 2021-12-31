@@ -7,9 +7,6 @@ import '../css/HomePage.css';
 
 const HomePage = () => {
     const [componentName, setComponentName] = useState<string>('default');
-    const backgrounds: Array<string> = [
-        'mock_ups/Screen Shot 2021-12-26 at 3.54.08 AM.png',
-    ];
 
     return (
         <div className='home' data-testid='homePage'>
