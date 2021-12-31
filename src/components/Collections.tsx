@@ -11,8 +11,8 @@ const Collections = ({ name }: any) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const files = await axios('http://localhost:8080/api/files');
-            // const files = await axios('http://18.220.242.141:8081/api/files');
+            // const files = await axios('http://localhost:8080/api/files');
+            const files = await axios('http://18.220.242.141:8081/api/files');
             setFiles(files.data);
         };
         if (showCollections) {

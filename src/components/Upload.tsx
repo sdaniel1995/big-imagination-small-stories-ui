@@ -34,8 +34,8 @@ const Upload = ({ name }: any) => {
         let element = document.querySelector('.upload');
         if (selectedFile) {
             fileData.append('file', selectedFile);
-            axios.post('http://localhost:8080/api/upload', fileData);
-            // axios.post('http://18.220.242.141:8081/api/upload', fileData);
+            // axios.post('http://localhost:8080/api/upload', fileData);
+            axios.post('http://18.220.242.141:8081/api/upload', fileData);
         }
         setSelectedFile(undefined);
         setPlaceHolder('Choose a file');
