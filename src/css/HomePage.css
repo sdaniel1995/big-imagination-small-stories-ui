@@ -1,25 +1,34 @@
 .home {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .homeSelections {
     display: flex;
     align-items: center;
     flex-direction: column;
+    height: auto;
 }
 
 .homeSelections h1 {
     font-size: 300%;
     transition: .2s;
     color: white;
+    opacity: 0;
+    animation: fadeIn 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
 .homeSelections h1:hover {
     transform: scale(2.0);
-    color: black;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
     margin-bottom: 50px;
 }
