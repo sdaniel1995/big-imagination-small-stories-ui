@@ -11,8 +11,8 @@ const Collections = ({ name }: any) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            // const files = await axios('http://localhost:8080/api/files');
-            const files = await axios('http://18.220.242.141:8081/api/files');
+            const files = await axios('http://localhost:8080/api/files');
+            // const files = await axios('http://18.220.242.141:8081/api/files');
             setFiles(files.data);
         };
         if (showCollections) {
@@ -21,15 +21,11 @@ const Collections = ({ name }: any) => {
     }, [showCollections]);
 
     const toggle = () => {
-        let element = document.querySelector('.app');
         show.current = !show.current;
         name('Collections');
-        element?.setAttribute('class', 'collections');
         setShowCollections(!showCollections);
         if (show.current === false) {
-            element = document.querySelector('.collections');
             name('default');
-            element?.setAttribute('class', 'app');
         }
     };
 

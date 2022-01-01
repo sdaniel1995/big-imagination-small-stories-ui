@@ -1,0 +1,61 @@
+.welcome {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: auto;
+}
+
+#button {
+    background: linear-gradient(to right, #4A00E0, #8E2DE2);
+    margin-top: 60px;
+    opacity: 0;
+    transition: .2s;
+    transform: scale(1);
+    animation: fadeIn 5s, pulse 2s infinite;
+    animation-fill-mode: forwards;
+    animation-delay: 5.0s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+    }
+
+    70% {
+        transform: scale(2.0);
+    }
+
+    100% {
+        transform: scale(0.95);
+    }
+}
+
+.welcome h1 {
+    width: auto;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid transparent; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+        typing 3s steps(40, end),
+        blink-caret .50s step-end 10;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+  
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: purple; }
+}

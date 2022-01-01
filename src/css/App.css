@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../images/HomePage.jpg');
+    background-color: black;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
