@@ -17,6 +17,14 @@
     font-size: 300%;
     transition: .2s;
     color: white;
+    opacity: 0;
+    animation: fadeIn 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
 .homeSelections h1:hover {

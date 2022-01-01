@@ -6,7 +6,7 @@ import '../css/Collections.css';
 
 const Collections = ({ name }: any) => {
     const [files, setFiles] = useState<Array<any>>();
-    const [showCollections, setShowCollections]= useState<boolean>(false);
+    const [showCollections, setShowCollections] = useState<boolean>(false);
     const show = useRef(false);
 
     useEffect(() => {

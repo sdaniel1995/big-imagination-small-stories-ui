@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useRef } from 'react';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { ArrowForwardIos, ArrowBackIos } from '@mui/icons-material';
 
 import '../css/Upload.css';
 
@@ -44,13 +44,18 @@ const Upload = ({ name }: any) => {
         <div className='homeSelections'>
             <h1 onClick={toggle}>Upload</h1>
             {showUpload &&
-                <div className='home'>
+                <div>
                     <input type="file" name="file" id="file" onChange={changeHandler} className='inputFile' />
                     <span id='input'>
                         <label htmlFor='file' id='inputLabel'>{fullFileName ? placeHolder : placeHolder.substring(0, 20) + '...'}</label>
                         {selectedFile &&
                             <>
-                                <ArrowForwardIosIcon id='moreArrow' onClick={() => setFullFileName(!fullFileName)} />
+                                {fullFileName === false
+                                    ?
+                                    <ArrowForwardIos id='moreArrow' onClick={() => setFullFileName(!fullFileName)} />
+                                    :
+                                    <ArrowBackIos id='moreArrow' onClick={() => setFullFileName(!fullFileName)} />
+                                }
                                 <button type="submit" id='submitBtn' onClick={handleSubmission}>Submit</button>
                             </>
                         }

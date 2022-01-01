@@ -12,6 +12,7 @@
     height: 50px;
     border-radius: 25px;
     padding: 5px;
+    border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.7);
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
     display: flex;
@@ -39,6 +40,12 @@
 
 #moreArrow {
     padding-left: 20px;
+    transition: transform .2s ease-out;
+}
+
+#moreArrow:hover {
+    color: #4A00E0;
+    transform: scale(1.2);
 }
 
 #submitBtn {
