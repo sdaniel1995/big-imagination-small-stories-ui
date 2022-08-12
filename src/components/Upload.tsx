@@ -7,6 +7,7 @@ import '../css/Upload.css';
 const Upload = ({ name }: any) => {
     const [selectedFile, setSelectedFile] = useState<File>();
     const [showUpload, setShowUpload] = useState<boolean>(false);
+    const [className, setClassName] = useState<string>('homeSelections');
     const show = useRef(false);
     const [placeHolder, setPlaceHolder] = useState<String>('Choose a file');
     const [fullFileName, setFullFileName] = useState<boolean>(false);
@@ -19,15 +20,16 @@ const Upload = ({ name }: any) => {
     const toggle = () => {
         show.current = !show.current;
         name('Upload');
+        setClassName('selected');
         setShowUpload(!showUpload);
         if (show.current === false) {
             name('default');
+            setClassName('');
         }
     };
 
     const handleSubmission = () => {
         const fileData = new FormData();
-        let element = document.querySelector('.upload');
         if (selectedFile) {
             fileData.append('file', selectedFile);
             axios.post('http://localhost:8080/api/upload', fileData);
@@ -36,13 +38,13 @@ const Upload = ({ name }: any) => {
         setSelectedFile(undefined);
         setPlaceHolder('Choose a file');
         name('default');
-        element?.setAttribute('class', 'app');
+        setClassName('');
         setShowUpload(!showUpload);
     };
 
     return (
         <div className='homeSelections'>
-            <h1 onClick={toggle}>Upload</h1>
+            <h1 onClick={toggle} className={className}>Upload</h1>
             {showUpload &&
                 <div>
                     <input type="file" name="file" id="file" onChange={changeHandler} className='inputFile' />
