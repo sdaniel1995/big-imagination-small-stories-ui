@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import '../css/Welcome.css';
 
-const Welcome = ({ name }: any) => {
+const Welcome = ({ component }: any) => {
     useEffect(() => {
         const interval = setInterval(() => {
-            name('default');
+            component('default');
         }, 5500);
         return () => clearInterval(interval);
-    }, [name])
+    }, [component])
 
     return (
         <div className='welcome weclomeTypewWriter'>

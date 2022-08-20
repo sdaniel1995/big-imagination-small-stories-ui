@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import Welcome from './Welcome';
-import Collections from './Collections';
-import Upload from './Upload';
+import Collections from './Collections/Collections';
+import Upload from './Upload/Upload';
 import AboutMe from './AboutMe';
 import '../css/HomePage.css';
 
@@ -12,19 +12,19 @@ const HomePage = () => {
     return (
         <div className='home' data-testid='homePage'>
             {componentName === ''
-                ? <Welcome name={setComponentName} />
+                ? <Welcome component={setComponentName} />
                 : null
             }
             {componentName === 'default' || componentName === 'Collections'
-                ? <Collections name={setComponentName} />
+                ? <Collections component={setComponentName} />
                 : null
             }
             {componentName === 'default' || componentName === 'Upload'
-                ? <Upload name={setComponentName} />
+                ? <Upload component={setComponentName} />
                 : null
             }
             {componentName === 'default' || componentName === 'AboutMe'
-                ? <AboutMe name={setComponentName} />
+                ? <AboutMe component={setComponentName} />
                 : null
             }
         </div>

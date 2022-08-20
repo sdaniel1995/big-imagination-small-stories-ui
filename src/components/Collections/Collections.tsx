@@ -1,8 +1,7 @@
 import ReactAudioPlayer from 'react-audio-player';
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
-
-import '../css/Collections.css';
+import '../../css/Collections.css';
 
 const Collections = ({ name }: any) => {
     const [files, setFiles] = useState<Array<any>>();
