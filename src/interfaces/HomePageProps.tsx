@@ -1,5 +1,5 @@
 interface HomePageProps {
-    component: React.ReactNode
+    component: JSX.Element
 }
 
 export default HomePageProps;

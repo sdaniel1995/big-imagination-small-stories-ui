@@ -11,7 +11,7 @@ const Welcome = ({ show }: WelcomeProps) => {
     }, [show])
 
     return (
-        <div className="welcome weclomeTypewWriter">
+        <div className="welcome weclomeTypewWriter" data-testid="welcome">
             <h1>This is Where the Story Begins...</h1>
         </div>
     );

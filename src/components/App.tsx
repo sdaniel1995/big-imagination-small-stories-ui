@@ -10,7 +10,7 @@ const App = () => {
     const [showWelcome, setShowWelcome] = useState<boolean>(true);
     const [showLogin, setShowLogin] = useState<boolean>(true);
     // const [isReader, setIsReader] = useState<boolean>(false);
-    const [component, setComponent] = useState<React.ReactNode>(<Collections />);
+    const [component, setComponent] = useState<JSX.Element>(<Collections />);
     
     return (
         <div className="app" data-testid="app">

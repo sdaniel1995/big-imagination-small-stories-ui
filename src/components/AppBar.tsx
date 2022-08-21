@@ -14,7 +14,7 @@ const AppBar = ({ setComponent }: AppBarProps) => {
   };
 
   return (
-    <div className="appBar fadeIn">
+    <div className="appBar fadeIn" data-testid="appBar">
       <div className="leftContent">
         <h1>Big Imagination Small Stories.</h1>
       </div>

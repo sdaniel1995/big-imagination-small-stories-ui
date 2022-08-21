@@ -15,12 +15,13 @@ const Login = ({ show }: LoginFormProps) => {
     };
 
     return (
-        <div className="login">
+        <div className="login" data-testid="login">
             <form className="loginForm" onSubmit={handleSubmit(onSubmit)}>
                 <h1>Log In</h1>
                 <TextField
+                    data-testid="username"
                     className="loginForm-input"
-                    label="UserName"
+                    label="User Name"
                     {...register("username")}
                     error={!!errors.username}
                     helperText={errors.username && errors.username.message}
@@ -33,6 +34,7 @@ const Login = ({ show }: LoginFormProps) => {
                     }}
                     variant="outlined" />
                 <TextField
+                    data-testid="password"
                     className="loginForm-input"
                     type="password"
                     label="Password"
@@ -46,9 +48,9 @@ const Login = ({ show }: LoginFormProps) => {
                             </InputAdornment>
                         ),
                     }} variant="outlined" />
-                <Button variant="text" className="auxBtn" id="forgotPassword">Forgot password?</Button>
-                <Button variant="contained" type="submit" id="loginBtn">Login</Button>
-                <Button variant="text" className="auxBtn" onClick={() => show(false)}>Continue as reader...</Button>
+                <Button data-testid="forgotPasswordBtn" variant="text" className="auxBtn" id="forgotPassword">Forgot password?</Button>
+                <Button data-testid="loginBtn" variant="contained" type="submit" id="loginBtn">Login</Button>
+                <Button data-testid="continueAsReaderBtn" variant="text" className="auxBtn" onClick={() => show(false)}>Continue as reader...</Button>
             </form>
         </div>
     )
