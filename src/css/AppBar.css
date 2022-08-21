@@ -1,0 +1,23 @@
+.appBar {
+    display: flex;
+    height: 150px;
+    color: white;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.leftContent {
+    margin-right: 400px;
+}
+
+.rightContent {
+    display: flex;
+    gap: 1rem;
+    font-size: 20px;
+    color: white;
+}
+
+.rightContent > Button {
+    font-size: 20px;
+    color: white;
+}

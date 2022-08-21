@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
-import '../css/Welcome.css';
+import { useEffect } from "react";
+import WelcomeProps from "../interfaces/WelcomeProps";
+import "../css/Welcome.css";
 
-const Welcome = ({ component }: any) => {
+const Welcome = ({ show }: WelcomeProps) => {
     useEffect(() => {
         const interval = setInterval(() => {
-            component('default');
+            show(false);
         }, 5500);
         return () => clearInterval(interval);
-    }, [component])
+    }, [show])
 
     return (
-        <div className='welcome weclomeTypewWriter'>
+        <div className="welcome weclomeTypewWriter">
             <h1>This is Where the Story Begins...</h1>
         </div>
     );

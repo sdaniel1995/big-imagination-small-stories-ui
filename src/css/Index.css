@@ -1,4 +1,14 @@
 body {
     margin: 0;
-    background: #000 linear-gradient(180deg,#0000,#213944);
+    background-color: black;
+    /* background: #000 linear-gradient(180deg,#0000,#213944); */
 }
+
+.fadeIn {
+    animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }

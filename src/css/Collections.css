@@ -1,8 +1,13 @@
+.collections {
+    background: inherit;
+    color: white;
+}
+
+.collections > h1 {
+    color: white;
+}
+
 .audioList {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
 .audio {

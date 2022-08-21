@@ -1,10 +1,10 @@
 .welcome {
     color: white;
-    display: flex;
-    flex-direction: column;
+    display: flex;  
     align-items: center;
-    height: auto;
-    width: auto;
+    justify-content: center; 
+    height: 100%;
+    width: 100%;
 }
 
 .welcome h1 {
@@ -21,7 +21,7 @@
 
 @keyframes typing {
     from { width: 0 }
-    to { width: 100% }
+    to { width: 43% }
 }
   
 /* The typewriter cursor effect */
