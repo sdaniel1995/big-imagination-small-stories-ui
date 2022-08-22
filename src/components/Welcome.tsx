@@ -1,6 +1,9 @@
 import { useEffect } from "react";
-import WelcomeProps from "../interfaces/WelcomeProps";
 import "../css/Welcome.css";
+
+interface WelcomeProps {
+    show: Function
+};
 
 const Welcome = ({ show }: WelcomeProps) => {
     useEffect(() => {

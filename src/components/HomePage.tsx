@@ -1,5 +1,8 @@
-import HomePageProps from "../interfaces/HomePageProps";
 import "../css/HomePage.css"
+
+interface HomePageProps {
+  component: JSX.Element
+};
 
 const HomePage = ({ component }: HomePageProps) => {
   return (

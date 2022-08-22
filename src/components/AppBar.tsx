@@ -2,8 +2,12 @@ import { Button } from "@mui/material";
 import Collections from "./Collections";
 import Upload from "./Upload";
 import AboutMe from "./AboutMe";
-import AppBarProps from "../interfaces/AppBarProps";
 import "../css/AppBar.css"
+
+interface AppBarProps {
+  setComponent: Function
+};
+
 
 const AppBar = ({ setComponent }: AppBarProps) => {
   const handleOnClick = (event: any) => {

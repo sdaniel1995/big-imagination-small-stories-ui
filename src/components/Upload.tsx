@@ -22,9 +22,15 @@ const Upload = () => {
     const [seriesOptions, setSeriesOptions] = useState<Array<Object>>();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/series").then(resp => {
-            setSeriesOptions(resp.data)
-        });
+        const fetchData = async () => {
+            try {
+                const result = await axios.get("http://localhost:8080/api/series");
+                setSeriesOptions(result.data);
+            } catch (error) {
+                // console.log(error);
+            }
+        };
+        fetchData();
     }, [])
 
     const handleChange = (event: any) => {
@@ -53,12 +59,12 @@ const Upload = () => {
     };
 
     return (
-        <div className="upload">
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="upload" data-testid="upload">
+            <form onSubmit={handleSubmit(onSubmit)} data-testid="uploadForm">
                 <FormControl variant="filled">
                     {/* Series selection and label */}
                     <InputLabel id="series">Series</InputLabel>
-                    <Select {...register("series")} labelId="series" value={series} label="Series" onChange={handleChange}>
+                    <Select {...register("series")} data-testid="seriesInput" labelId="series" value={series} label="Series" onChange={handleChange}>
                         {seriesOptions && seriesOptions.map(({ id, name }: any) => (
                             <MenuItem key={id} value={name}>{name}</MenuItem>
                         ))}
@@ -67,7 +73,7 @@ const Upload = () => {
                     {/* Chapter selection and label */}
                     <FormControl variant="filled">
                         <InputLabel id="chapter">Chapter</InputLabel>
-                        <Select {...register("chapter")} labelId="chapter" value={chapter} label="Chapter" onChange={handleChange}>
+                        <Select {...register("chapter")} data-testid="chapterInput" labelId="chapter" value={chapter} label="Chapter" onChange={handleChange}>
                             <MenuItem value="" selected>None</MenuItem>
                             {getChapterOptions(10).map(({ id, text, value }: any) => (
                                 <MenuItem key={id} value={value}>{text}</MenuItem>
@@ -76,14 +82,14 @@ const Upload = () => {
                     </FormControl>
 
                     {/* Description text field */}
-                    <TextField {...register("description")} label="Description" multiline minRows={5} maxRows={10} value={desciption} onChange={handleChange} />
+                    <TextField {...register("description")} data-testid="descriptionInput" label="Description" multiline minRows={5} maxRows={10} value={desciption} onChange={handleChange} />
 
                     {/* File selection */}
                     <FormControl>
                         <Input className="inputFile" type="file" name="file" id="input" onChange={handleChange} />
                     </FormControl>
 
-                    <Button variant="contained" type="submit">Submit</Button>
+                    <Button data-testid="submitBtn" variant="contained" type="submit">Submit</Button>
                 </FormControl>
             </form>
         </div>

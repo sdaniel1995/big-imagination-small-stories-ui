@@ -4,8 +4,11 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockIcon from "@mui/icons-material/Lock";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginSchema, { LoginFormData } from "../validations/loginSchema";
-import LoginFormProps from "../interfaces/LoginFormProps";
 import "../css/Login.css"
+
+interface LoginFormProps {
+    show: Function
+};
 
 const Login = ({ show }: LoginFormProps) => {
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<LoginFormData>({ mode: "all", resolver: zodResolver(loginSchema) });
@@ -32,7 +35,8 @@ const Login = ({ show }: LoginFormProps) => {
                             </InputAdornment>
                         ),
                     }}
-                    variant="outlined" />
+                    variant="outlined"
+                />
                 <TextField
                     data-testid="password"
                     className="loginForm-input"
@@ -47,7 +51,9 @@ const Login = ({ show }: LoginFormProps) => {
                                 <LockIcon />
                             </InputAdornment>
                         ),
-                    }} variant="outlined" />
+                    }}
+                    variant="outlined"
+                />
                 <Button data-testid="forgotPasswordBtn" variant="text" className="auxBtn" id="forgotPassword">Forgot password?</Button>
                 <Button data-testid="loginBtn" variant="contained" type="submit" id="loginBtn">Login</Button>
                 <Button data-testid="continueAsReaderBtn" variant="text" className="auxBtn" onClick={() => show(false)}>Continue as reader...</Button>
@@ -56,4 +62,4 @@ const Login = ({ show }: LoginFormProps) => {
     )
 }
 
-export default Login
+export default Login;

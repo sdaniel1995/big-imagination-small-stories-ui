@@ -6,11 +6,11 @@ const loginSchema = z.object({
     username: z
     .string()
     .min(1, "Username is required"),
-
+    
     password: z
     .string()
     .min(1, "Password is required")
-    .max(8, "Password must be less than 8 characters"),
+    .max(8, "Password must be less than 9 characters"),
 });
 
 export default loginSchema;

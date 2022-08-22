@@ -2,9 +2,7 @@ import { cleanup, render, fireEvent, screen, act } from "@testing-library/react"
 import App from "../../components/App"
 
 
-afterEach(() => {
-    cleanup();
-});
+afterEach(cleanup);
 
 describe("App", () => {
     test("renders login component", () => {
