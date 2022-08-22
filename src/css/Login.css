@@ -24,6 +24,7 @@
 .loginForm h1{
     font-size: 40px;
     font-style: bold;
+    font-family: 'Roboto', sans-serif;
 }
 
 .loginForm-input {
