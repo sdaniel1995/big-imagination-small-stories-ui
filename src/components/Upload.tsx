@@ -15,21 +15,22 @@ import "../css/Upload.css";
 
 const Upload = () => {
     const { register, handleSubmit, getValues } = useForm();
-    const [selectedFile, setSelectedFile] = useState<File>();
+    // const [selectedFile, setSelectedFile] = useState<File>();
     const [series, setSeries] = useState<string>("");
     const [chapter, setChapter] = useState<string>("");
     const [desciption, setDescription] = useState<string>("");
     const [seriesOptions, setSeriesOptions] = useState<Array<Object>>();
 
+    const fetchData = async () => {
+        try {
+            const result = await axios.get("http://localhost:8080/api/series");
+            setSeriesOptions(result.data);
+        } catch (error) {
+            // console.log(error);
+        }
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const result = await axios.get("http://localhost:8080/api/series");
-                setSeriesOptions(result.data);
-            } catch (error) {
-                // console.log(error);
-            }
-        };
         fetchData();
     }, [])
 
@@ -37,7 +38,7 @@ const Upload = () => {
         const { name, value, files } = event.target;
         if (name === "series") { setSeries(value); }
         if (name === "chapter") { setChapter(value); }
-        if (name === "file") { setSelectedFile(files[0]); }
+        // if (name === "file") { setSelectedFile(files[0]); }
         if (name === "description") { setDescription(value); }
     };
 
@@ -45,14 +46,14 @@ const Upload = () => {
         console.log(data);
         const { series, chapter } = getValues();
         const fileData = new FormData();
-        if (selectedFile) {
-            fileData.append("file", selectedFile);
-            fileData.append("series", series);
-            fileData.append("chapter", chapter);
-            axios.post("http://localhost:8080/api/upload", fileData);
-            // axios.post("http://18.220.242.141:8081/api/upload", fileData);
-        }
-        setSelectedFile(undefined);
+        // if (selectedFile) {
+        //     fileData.append("file", selectedFile);
+        //     fileData.append("series", series);
+        //     fileData.append("chapter", chapter);
+        //     axios.post("http://localhost:8080/api/upload", fileData);
+        //     // axios.post("http://18.220.242.141:8081/api/upload", fileData);
+        // }
+        // setSelectedFile(undefined);
         setSeries("");
         setChapter("");
         setDescription("");
@@ -64,7 +65,7 @@ const Upload = () => {
                 <FormControl variant="filled">
                     {/* Series selection and label */}
                     <InputLabel id="series">Series</InputLabel>
-                    <Select {...register("series")} data-testid="seriesInput" labelId="series" value={series} label="Series" onChange={handleChange}>
+                    <Select {...register("series")} data-testid="seriesSelection" labelId="series" value={series} label="Series" onChange={handleChange}>
                         {seriesOptions && seriesOptions.map(({ id, name }: any) => (
                             <MenuItem key={id} value={name}>{name}</MenuItem>
                         ))}
@@ -73,8 +74,7 @@ const Upload = () => {
                     {/* Chapter selection and label */}
                     <FormControl variant="filled">
                         <InputLabel id="chapter">Chapter</InputLabel>
-                        <Select {...register("chapter")} data-testid="chapterInput" labelId="chapter" value={chapter} label="Chapter" onChange={handleChange}>
-                            <MenuItem value="" selected>None</MenuItem>
+                        <Select {...register("chapter")} data-testid="chapterSelection" labelId="chapter" value={chapter} label="Chapter" onChange={handleChange}>
                             {getChapterOptions(10).map(({ id, text, value }: any) => (
                                 <MenuItem key={id} value={value}>{text}</MenuItem>
                             ))}
