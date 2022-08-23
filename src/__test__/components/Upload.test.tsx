@@ -1,4 +1,4 @@
-import { render, cleanup, fireEvent, act, within } from "@testing-library/react";
+import { render, cleanup, fireEvent, act, within, waitFor } from "@testing-library/react";
 import axios from "axios";
 import Upload from "../../components/Upload";
 
@@ -38,6 +38,23 @@ describe("Upload", () => {
         expect(getByTestId("upload")).toContainElement(getByTestId("submitBtn"));
     });
 
+    test("should render correct options for series selection", async () => {
+        mockedAxios.get.mockResolvedValue({data: mockedData});
+        const { getAllByRole, getByRole, getByText } = render(<Upload />);
+        expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:8080/api/series");
+        expect(mockedAxios.get).toHaveBeenCalledTimes(1);
+        const seriesSelection = getAllByRole("button")[0];
+        await act(async () => {
+            fireEvent.mouseDown(seriesSelection);
+        });
+        const listBox = within(getByRole("listbox"));
+        const listBoxSize = await waitFor(() => listBox.getAllByRole("option"));
+        expect(listBoxSize.length).toBe(3);
+        for (let index = 0; index < listBoxSize.length; index++) {
+            expect(getByText(mockedData[0].name)).toBeInTheDocument()
+        };
+    });
+
     test("render correct options for chapters selection", async () => {
         const { getByRole, getByText, getAllByRole } = render(<Upload />);
         const chapterSelection = getAllByRole("button")[1];
@@ -51,19 +68,24 @@ describe("Upload", () => {
             expect(getByText(`Chapter ${chapter}`)).toBeInTheDocument();
         };
     });
-
-    test("should render correct options for series selection", async () => {
-        // mock axios promise
-        await act(async () => {
-            mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockedData));
-            render(<Upload />);
-        });
-        expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:8080/api/series");
-        expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-    });
 });
 
 describe("Upload functionality", () => {
+    test("handleChange should change selected option for series selection", async () => {
+        mockedAxios.get.mockResolvedValue({data: mockedData});
+        const { getAllByRole, getByRole, getByTestId } = render(<Upload />);
+        expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:8080/api/series");
+        expect(mockedAxios.get).toHaveBeenCalledTimes(1);
+        const seriesSelection = getAllByRole("button")[0];
+        expect(getByTestId("seriesSelection")).not.toHaveTextContent("Chapter 1");
+        await act(async () => { // Makes chapter options visible for selection
+            fireEvent.mouseDown(seriesSelection);
+        });
+        const seriesOptions = await waitFor(() => within(getByRole("listbox")));
+        act(() => { fireEvent.click(seriesOptions.getByText("Dusty Roads")); }); // Selects an option
+        expect(getByTestId("seriesSelection")).toHaveTextContent("Dusty Roads");
+    });
+
     test("handleChange should change selected option for chapters selection", async () => {
         const { getByTestId, getByRole, getAllByRole } = render(<Upload />);
         const chapterSelection = getAllByRole("button")[1];
